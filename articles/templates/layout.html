@@ -1,0 +1,36 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{%block title%}{%endblock%}</title>
+
+    <link rel="stylesheet" href="{% static 'articles/css/styles.css' %}">
+</head>
+<body>
+    <div class="header">
+        <div class="header_content">
+            <a class="header_link" href="{% url 'index' %}">На главную</a>
+            <a class="header_link" href="{% url 'article_create' %}">Создать статью</a>
+        </div>
+
+        <div class="header_content">
+            {% if user.is_authenticated %}
+                <p class="header_text">Вы авторизованы как: {{ user }}</p>
+                <a class="header_link" href="{% url 'logout' %}">Выйти</a>
+            {% else %}
+                <p class="header_text">Вы не авторизированны</p>
+                <a class="header_link" href="{% url 'login' %}">Войти</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <main>
+        {%block content%}
+        {%endblock%}
+    </main>
+</body>
+</html>

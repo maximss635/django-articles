@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}Вход{% endblock %}
+
+{% block content %}
+  <h1>Вход</h1>
+
+  <form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+    <table>
+      <tr>
+        <td><p>{{ form.username.label_tag }}</p></td>
+        <td>{{ form.username }}</td>
+      </tr>
+      <tr>
+        <td><p>{{ form.password.label_tag }}</p></td>
+        <td>{{ form.password }}</td>
+      </tr>
+    </table>
+
+    <div align="center">
+      <input type="submit" value="Войти" style="margin-top: 10px"/>
+      <a href="{% url 'registration' %}">Зарегестрироваться</a>
+    </div>
+  </form>
+
+  {% if form.errors %}
+    <div class="error_msg">
+      <p>Ошибка авторизации</p>
+    </div>
+  {% endif %}
+
+{% endblock %}

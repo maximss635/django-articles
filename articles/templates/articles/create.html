@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+    <h1>{{ title }}</h1>
+
+    {% if user.is_authenticated %}
+        <form method="post">
+            {% csrf_token %}
+
+            <p>Название:</p>
+            {{ form.title }}
+
+            <p>Статья: </p>
+            {{ form.full_text }}
+
+            <p>{{ form.is_private }}Только для авторизированных пользователей</p><br>
+
+            <button class="btn btn-success" type="submit">Сохранить</button>
+        </form>
+    {% else %}
+        <p>Для создания статей авторизируйтесь</p>
+    {% endif %}
+
+    <p>{{ error }}</p>
+{% endblock %}

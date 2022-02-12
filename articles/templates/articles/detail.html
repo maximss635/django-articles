@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{ article.title }}
+{% endblock %}
+
+{% block content %}
+    <h1>{{ article.title }}</h1>
+    <p>{{ article.full_text }}</p><br>
+    <p>Дата публикации: {{ article.date }}</p>
+    <p>Автор: {{ article.author }}</p>
+
+    <div>
+        <a href="{% url 'article_update' article.id %}">Редактировать</a><br>
+        <a href="{% url 'article_delete' article.id %}">Удалить</a>
+    </div>
+
+    <p>{{ error }}</p>
+{% endblock %}
