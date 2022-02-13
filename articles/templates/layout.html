@@ -23,7 +23,7 @@
                 <p class="header_text">Вы авторизованы как: {{ user }}</p>
                 <a class="header_link" href="{% url 'logout' %}">Выйти</a>
             {% else %}
-                <p class="header_text">Вы не авторизированны</p>
+                <p class="header_text">Вы не авторизованы</p>
                 <a class="header_link" href="{% url 'login' %}">Войти</a>
             {% endif %}
         </div>
