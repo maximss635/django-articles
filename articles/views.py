@@ -77,11 +77,11 @@ class ArticleUpdateView(UpdateView):
         except self.model.DoesNotExist:
             return HttpResponseNotFound("<h1>Page not found</h1>")
 
-        if request.user != self.object.author:
+        if request.user.is_superuser or request.user == self.object.author:
+            return ProcessFormView.get(self, request, args, kwargs)
+        else:
             request.session['article_error'] = 'Вы можете редактировать только свои статьи'
             return redirect('/articles/{}'.format(kwargs['pk']))
-        else:
-            return ProcessFormView.get(self, request, args, kwargs)
 
 
 class ArticleDetailView(TemplateView):
