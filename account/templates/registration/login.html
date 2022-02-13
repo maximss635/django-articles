@@ -9,7 +9,7 @@
     {% csrf_token %}
     <table>
       <tr>
-        <td><p>{{ form.username.label_tag }}</p></td>
+        <td><p>Email:</p></td>
         <td>{{ form.username }}</td>
       </tr>
       <tr>
@@ -20,13 +20,13 @@
 
     <div align="center">
       <input type="submit" value="Войти" style="margin-top: 10px"/>
-      <a href="{% url 'registration' %}">Зарегестрироваться</a>
+      <a href="{% url 'registration' %}">Зарегистрироваться</a>
     </div>
   </form>
 
   {% if form.errors %}
     <div class="error_msg">
-      <p>Ошибка авторизации</p>
+      <p style="text-align: center">Ошибка авторизации</p>
     </div>
   {% endif %}
 

@@ -1,4 +1,4 @@
-from django.http import HttpResponse, HttpResponseNotFound
+from django.http import HttpResponseNotFound
 from django.shortcuts import render, redirect
 from django.views.generic import UpdateView, TemplateView, CreateView
 from django.views.generic.edit import ProcessFormView

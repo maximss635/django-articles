@@ -1,19 +1,25 @@
 body {
     background: #2c2c2c;
     Flex-direction: column;
-    Align-items: center;
     Display: flex;
     padding-top: 10px;
+    align-items: center;
 }
 
 h1 {
     color: white;
     text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
 }
 
 p, a {
     color: white;
     margin: 0;
+}
+
+main {
+    /*position: relative;*/
 }
 
 .header {
@@ -54,21 +60,22 @@ p, a {
 
 .error_msg {
     max-width: 250px;
-    margin-top: 10px;
+    margin-top: 20px;
+    text-align: center;
 }
 
 .article_list {
-    float: left;
-    color: #fff;
+    align-items: center;
     text-align: center;
-    width: 75%;
+    display: grid;
+    grid-template-columns: 350px 350px 350px 350px;
+    grid-gap: 20px;
 }
 
 .article {
     background: burlywood;
     border-radius: 30px;
-    width: 500px;
-    height: 150px;
+    height: 200px;
 }
 
 .article_list h1 {
