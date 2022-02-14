@@ -1,6 +1,7 @@
 from django.contrib.auth.password_validation import MinimumLengthValidator, validate_password
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
+from django.contrib import auth
 
 from rest_framework import generics, status
 from rest_framework.response import Response
@@ -45,6 +46,10 @@ class RegistrationView(generics.CreateAPIView):
 
             serializer.save()
             data['response'] = True
+
+            user = auth.authenticate(username=username, password=password)
+            auth.login(request, user)
+
             return Response(data, status=status.HTTP_200_OK)
 
         else:
