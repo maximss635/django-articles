@@ -6,11 +6,8 @@ class Article(models.Model):
     title = models.CharField('Название', max_length=20)
     full_text = models.TextField('Статья')
     date = models.DateTimeField('Дата публикации')
-    is_private = models.BooleanField('Публичная', default=False)
+    is_private = models.BooleanField('Только для авторизированных', default=False)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
-
-    def get_absolute_url(self):
-        return '/articles/{}'.format(self.id)
