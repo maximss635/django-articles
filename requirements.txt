@@ -2,3 +2,4 @@ django==4.0.2
 dj_database_url
 psycopg2
 gunicorn
+djangorestframework
