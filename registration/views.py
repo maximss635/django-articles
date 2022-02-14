@@ -39,9 +39,14 @@ class RegistrationView(generics.CreateAPIView):
 
             try:
                 validate_email(username)
+            except ValidationError as error:
+                data['username'] = error
+                return Response(data)
+
+            try:
                 validate_password(password, password_validators=[CustomPasswordValidator()])
             except ValidationError as error:
-                data['error'] = error
+                data['password'] = error
                 return Response(data)
 
             serializer.save()
