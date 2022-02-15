@@ -2,7 +2,7 @@ from rest_framework import permissions, generics
 
 from .models import Article
 from .serializers import ArticleSerializer
-from .permissions import IsOwnerOrAdmin, IsPublicArticle
+from .permissions import ArticleUpdateViewPermission, IsPublicArticle
 from .filters import PrivateArticleFilter
 
 
@@ -24,7 +24,7 @@ class ArticleDetailView(generics.RetrieveAPIView):
 class ArticleUpdateView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ArticleSerializer
     queryset = Article.objects.all()
-    permission_classes = [IsOwnerOrAdmin]
+    permission_classes = [ArticleUpdateViewPermission]
 
 
 # /articles/create/
